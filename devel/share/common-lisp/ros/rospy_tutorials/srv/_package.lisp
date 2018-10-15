@@ -1,0 +1,15 @@
+(cl:defpackage rospy_tutorials-srv
+  (:use )
+  (:export
+   "ADDTWOINTS"
+   "<ADDTWOINTS-REQUEST>"
+   "ADDTWOINTS-REQUEST"
+   "<ADDTWOINTS-RESPONSE>"
+   "ADDTWOINTS-RESPONSE"
+   "BADTWOINTS"
+   "<BADTWOINTS-REQUEST>"
+   "BADTWOINTS-REQUEST"
+   "<BADTWOINTS-RESPONSE>"
+   "BADTWOINTS-RESPONSE"
+  ))
+

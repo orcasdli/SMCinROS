@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/peterli/catkin_ws_com/src/optitrack_motive_2_client/include/optitrack_motive_2_client/motionCaptureClientFramework.cpp
+motionCaptureClientFramework.h
+/home/peterli/catkin_ws_com/src/optitrack_motive_2_client/include/optitrack_motive_2_client/motionCaptureClientFramework.h
+
+/home/peterli/catkin_ws_com/src/optitrack_motive_2_client/include/optitrack_motive_2_client/motionCaptureClientFramework.h
+iostream
+-
+linux/limits.h
+-
+boost/optional.hpp
+-
+chrono
+-
+thread
+-
+unistd.h
+-
+netinet/in.h
+-
+arpa/inet.h
+-
+netdb.h
+-
+cstring
+-
+

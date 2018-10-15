@@ -1,0 +1,9 @@
+<!-- http://wiki.ros.org/roslaunch/XML/node -->
+<launch>
+
+   <node name="SAPcontrol_Openloop" pkg="learning_com" type="SAPcontrol_Openloop" output="screen">
+      <!--<rosparam file="$(find mypackage)/config/example.yaml" command="load" />-->
+      <param name="flag" type="int" value="1"/>
+      <!--flag =1 为圆周运动，2为余弦运动 -->  
+   </node>
+</launch>

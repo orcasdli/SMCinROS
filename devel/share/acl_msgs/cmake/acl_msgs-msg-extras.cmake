@@ -1,0 +1,2 @@
+set(acl_msgs_MESSAGE_FILES "/home/peterli/catkin_ws_SMC/src/acl_msgs/msg/IMU.msg;/home/peterli/catkin_ws_SMC/src/acl_msgs/msg/QuadAttCmd.msg;/home/peterli/catkin_ws_SMC/src/acl_msgs/msg/QuadMotors.msg;/home/peterli/catkin_ws_SMC/src/acl_msgs/msg/State.msg;/home/peterli/catkin_ws_SMC/src/acl_msgs/msg/SMCData.msg;/home/peterli/catkin_ws_SMC/src/acl_msgs/msg/ViconState.msg")
+set(acl_msgs_SERVICE_FILES "")

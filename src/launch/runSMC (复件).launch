@@ -1,0 +1,19 @@
+<!-- http://wiki.ros.org/roslaunch/XML/node -->
+<launch>
+
+   <node name="optitrack_motive_2_client_node" pkg="optitrack_motive_2_client" type="optitrack_motive_2_client_node" output="screen">
+      <!--<rosparam file="$(find mypackage)/config/example.yaml" command="load" />-->
+      <param name="MyIPAddress" type="string" value="192.168.1.102" />
+      <param name="ServerIPAddress" type="string" value="192.168.1.101" />
+      <!--备注-->
+   </node>
+
+   <node name="SAPcontrol" pkg="learning_com" type="SAPcontrol" output="screen">
+      <!--<rosparam file="$(find mypackage)/config/example.yaml" command="load" />-->
+      <param name="SMC_on" type="int" value="0" />
+      <!--如果为0就是开环跑，1是自适应SMC，2是普通SMC，后续考虑把参数也放进来-->
+      <param name="flag" type="int" value="1" />
+      <!--flag =1 为圆周运动，2为余弦运动 -->     
+   </node>
+
+</launch>

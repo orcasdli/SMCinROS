@@ -1,0 +1,8 @@
+prefix=/home/peterli/catkin_ws_SMC/devel
+
+Name: learning_com
+Description: Description of learning_com
+Version: 0.0.0
+Cflags: -I/home/peterli/catkin_ws_SMC/src/learning_com/include
+Libs: -L/home/peterli/catkin_ws_SMC/devel/lib 
+Requires: 

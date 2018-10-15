@@ -1,0 +1,8 @@
+prefix=/home/peterli/catkin_ws_SMC/install
+
+Name: optitrack_motive_2_client
+Description: Description of optitrack_motive_2_client
+Version: 0.0.1
+Cflags: -I/home/peterli/catkin_ws_SMC/install/include
+Libs: -L/home/peterli/catkin_ws_SMC/install/lib -loptitrack_motive_2_client
+Requires: nav_msgs roscpp rostime std_msgs
