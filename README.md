@@ -1,5 +1,6 @@
 # SMCinROS
 
+# WORKING IN PROCESS not finished yet
 Realize closed-loop control for mobile robots with sliding mode control in ROS. We assume that the mobile robot can already run standalone with '/cmd_vel' message. This project is used for sending desired motive commands to the mobile robot with measurement message of the robots.
 We assume only move forward for now in control loop.
 
