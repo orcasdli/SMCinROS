@@ -35,16 +35,18 @@
 *.app
 
 ### CMake ###
-CMakeCache.txt linguist-language=C++
-CMakeFiles linguist-language=C++
-CMakeScripts linguist-language=C++
-Testing linguist-language=C++
-Makefile linguist-language=C++
-cmake_install.cmake linguist-language=C++
-install_manifest.txt linguist-language=C++
-compile_commands.json linguist-language=C++
-CTestTestfile.cmake linguist-language=C++
-build linguist-language=C++
+CMakeCache.txt
+CMakeFiles 
+CMakeScripts 
+Testing 
+Makefile 
+cmake_install.cmake 
+install_manifest.txt 
+compile_commands.json 
+CTestTestfile.cmake 
+build 
+
+*.make linguist-language=C++
 
 ### ROS ###
 build/
