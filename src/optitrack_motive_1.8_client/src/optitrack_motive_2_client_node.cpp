@@ -1,3 +1,9 @@
+// original source:https://github.com/AgileDrones/OptiTrack-Motive-2-Client 
+// by Winter Guerra
+// winterg@mit.edu
+//https://winter.industries/ 
+
+
 // Include motion capture framework
 #include "optitrack_motive_2_client/motionCaptureClientFramework.h"
 // Include ACL message types (https://bitbucket.org/brettlopez/acl_msgs.git)

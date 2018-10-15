@@ -1,24 +1,27 @@
-#include "motionCaptureClientFramework.h"
+// original source:https://github.com/AgileDrones/OptiTrack-Motive-2-Client
+// by Winter Guerra
+// winterg@mit.edu
+// https://winter.industries/
 
+#include "motionCaptureClientFramework.h"
 
 namespace agile {
 
-motionCaptureClientFramework::motionCaptureClientFramework(std::string& szMyIPAddress, std::string& szServerIPAddress)
-{
+motionCaptureClientFramework::motionCaptureClientFramework(
+    std::string &szMyIPAddress, std::string &szServerIPAddress) {
   // Convert address std::string to c_str.
-  
+
   my_address = szMyIPAddress.c_str();
   server_address = szServerIPAddress.c_str();
 
   // init connection
   ok_ = initConnection();
-
 }
 
 bool motionCaptureClientFramework::initConnection() {
   const int optval = 0x100000;
   socklen_t optval_size = 4;
-  
+
   in_addr MulticastAddress{}, MyAddress{}, ServerAddress{};
   int retval = -1;
 
@@ -31,22 +34,19 @@ bool motionCaptureClientFramework::initConnection() {
 
   // ================ Create "Command" socket
   unsigned short port = 1510;
-                   printf("2%s:%d.\n",my_address,port);
+  printf("2%s:%d.\n", my_address, port);
   auto CommandSocket = CreateCommandSocket(inet_addr(my_address), port);
   if (CommandSocket == -1) {
-  // error
+    // error
     printf("Command socket creation error\n");
   } else {
     // [optional] set to non-blocking
-    //u_long iMode=1;
-    //ioctlsocket(CommandSocket,FIONBIO,&iMode);
+    // u_long iMode=1;
+    // ioctlsocket(CommandSocket,FIONBIO,&iMode);
     // set buffer
-    setsockopt(CommandSocket, SOL_SOCKET, SO_RCVBUF, (char *) &optval, 4);
-    getsockopt(CommandSocket,
-              SOL_SOCKET,
-              SO_RCVBUF,
-              (char *) &optval,
-              &optval_size);
+    setsockopt(CommandSocket, SOL_SOCKET, SO_RCVBUF, (char *)&optval, 4);
+    getsockopt(CommandSocket, SOL_SOCKET, SO_RCVBUF, (char *)&optval,
+               &optval_size);
     if (optval != 0x100000) {
       // err - actual size...
       printf("[CommandSocket] ReceiveBuffer size = %d\n", optval);
@@ -55,10 +55,7 @@ bool motionCaptureClientFramework::initConnection() {
 
   // allow multiple clients on same machine to use address/port
   int value = 1;
-  retval = setsockopt(DataSocket,
-                      SOL_SOCKET,
-                      SO_REUSEADDR,
-                      (char *) &value,
+  retval = setsockopt(DataSocket, SOL_SOCKET, SO_REUSEADDR, (char *)&value,
                       sizeof(value));
   if (retval == -1) {
     close(DataSocket);
@@ -66,33 +63,29 @@ bool motionCaptureClientFramework::initConnection() {
     return -1;
   }
   unsigned short dport = 1511;
-  struct sockaddr_in MySocketAddr{};
+  struct sockaddr_in MySocketAddr {};
   memset(&MySocketAddr, 0, sizeof(MySocketAddr));
   MySocketAddr.sin_family = AF_INET;
   MySocketAddr.sin_port = htons(PORT_DATA);
   MySocketAddr.sin_addr.s_addr = htonl(INADDR_ANY);
-  if (bind(DataSocket,
-            (struct sockaddr *) &MySocketAddr,
-            sizeof(struct sockaddr)) == -1) {
+  if (bind(DataSocket, (struct sockaddr *)&MySocketAddr,
+           sizeof(struct sockaddr)) == -1) {
     printf("[PacketClient] bind failed\n");
     return 0;
   }
   // join multicast group
-  struct ip_mreq Mreq{};
+  struct ip_mreq Mreq {};
   Mreq.imr_multiaddr = MulticastAddress;
   Mreq.imr_interface = MyAddress;
-  retval = setsockopt(DataSocket,
-                      IPPROTO_IP,
-                      IP_ADD_MEMBERSHIP,
-                      (char *) &Mreq,
+  retval = setsockopt(DataSocket, IPPROTO_IP, IP_ADD_MEMBERSHIP, (char *)&Mreq,
                       sizeof(Mreq));
   if (retval == -1) {
     printf("[PacketClient] join failed\n");
     return -1;
   }
   // create a 1MB buffer
-  setsockopt(DataSocket, SOL_SOCKET, SO_RCVBUF, (char *) &optval, 4);
-  getsockopt(DataSocket, SOL_SOCKET, SO_RCVBUF, (char *) &optval, &optval_size);
+  setsockopt(DataSocket, SOL_SOCKET, SO_RCVBUF, (char *)&optval, 4);
+  getsockopt(DataSocket, SOL_SOCKET, SO_RCVBUF, (char *)&optval, &optval_size);
   if (optval != 0x100000) {
     printf("[PacketClient] ReceiveBuffer size = %d\n", optval);
   }
@@ -112,65 +105,60 @@ bool motionCaptureClientFramework::initConnection() {
   PacketOut.nDataBytes = 0;
   int nTries = 3;
   while (nTries--) {
-    ssize_t iRet = sendto(CommandSocket,
-                        (char *) &PacketOut,
-                        4 + PacketOut.nDataBytes,
-                        0,
-                        (sockaddr *) &HostAddr,
-                        sizeof(HostAddr));
+    ssize_t iRet =
+        sendto(CommandSocket, (char *)&PacketOut, 4 + PacketOut.nDataBytes, 0,
+               (sockaddr *)&HostAddr, sizeof(HostAddr));
     printf("Trying to connect\n");
     if (iRet != -1)
       printf("Connected!\n Waiting for server info in response.\n");
- 
-      // Wait for server response. 
-      // This will contain the server tick frequency.
-      char ip_as_str[INET_ADDRSTRLEN];
-      ssize_t nDataBytesReceived;
-      sockaddr_in TheirAddress{};
-      agile::sPacket PacketIn{};
-      socklen_t addr_len = sizeof(struct sockaddr);
-     
-      nDataBytesReceived = recvfrom(CommandSocket,
-                                    (char *) &PacketIn,
-                                    sizeof(agile::sPacket),
-                                    0,
-                                    (struct sockaddr *) &TheirAddress,
-                                    &addr_len);
-       
-     //  if ((nDataBytesReceived == 0) || (nDataBytesReceived == -1))
-      //   continue;
 
-      // debug - print message
-      inet_ntop(AF_INET, &(TheirAddress.sin_addr), ip_as_str, INET_ADDRSTRLEN);
-      printf("[Client] Received command from %s: Command=%d, nDataBytes=%d\n",
-            ip_as_str, (int) PacketIn.iMessage, (int) PacketIn.nDataBytes);
-     /*
-      unsigned char *ptr = (unsigned char *) &PacketIn;
-      agile::sSender_Server *server_info = (agile::sSender_Server *) (ptr + 4);
+    // Wait for server response.
+    // This will contain the server tick frequency.
+    char ip_as_str[INET_ADDRSTRLEN];
+    ssize_t nDataBytesReceived;
+    sockaddr_in TheirAddress{};
+    agile::sPacket PacketIn{};
+    socklen_t addr_len = sizeof(struct sockaddr);
 
-      std::cout << "server tick frequency: " << server_info->HighResClockFrequency << std::endl;
-      server_frequency = server_info->HighResClockFrequency;
-      // Done processing server response.
-     */
-      break;
-   
-      return true;
+    nDataBytesReceived =
+        recvfrom(CommandSocket, (char *)&PacketIn, sizeof(agile::sPacket), 0,
+                 (struct sockaddr *)&TheirAddress, &addr_len);
+
+    //  if ((nDataBytesReceived == 0) || (nDataBytesReceived == -1))
+    //   continue;
+
+    // debug - print message
+    inet_ntop(AF_INET, &(TheirAddress.sin_addr), ip_as_str, INET_ADDRSTRLEN);
+    printf("[Client] Received command from %s: Command=%d, nDataBytes=%d\n",
+           ip_as_str, (int)PacketIn.iMessage, (int)PacketIn.nDataBytes);
+
+    /*******************************************************************************/
+    // These are commented out because the package in header file has been
+    // changed, commented by Peter Li
+    /*******************************************************************************/
+    /*
+     unsigned char *ptr = (unsigned char *) &PacketIn;
+     agile::sSender_Server *server_info = (agile::sSender_Server *) (ptr + 4);
+
+     std::cout << "server tick frequency: " <<
+     server_info->HighResClockFrequency << std::endl;
+     server_frequency = server_info->HighResClockFrequency;
+     // Done processing server response.
+    */
+    break;
+
+    return true;
     printf("Initial connect request failed\n");
     return false;
-
   }
 }
 
 // ============================== Data mode ================================ //
 // Funtion that assigns a time code values to 5 variables passed as arguments
 // Requires an integer from the packet as the timecode and timecodeSubframe
-bool motionCaptureClientFramework::DecodeTimecode(unsigned int inTimecode,
-                    unsigned int inTimecodeSubframe,
-                    int *hour,
-                    int *minute,
-                    int *second,
-                    int *frame,
-                    int *subframe) {
+bool motionCaptureClientFramework::DecodeTimecode(
+    unsigned int inTimecode, unsigned int inTimecodeSubframe, int *hour,
+    int *minute, int *second, int *frame, int *subframe) {
   bool bValid = true;
 
   *hour = (inTimecode >> 24) & 255;
@@ -183,22 +171,16 @@ bool motionCaptureClientFramework::DecodeTimecode(unsigned int inTimecode,
 }
 
 // Takes timecode and assigns it to a string
-bool motionCaptureClientFramework::TimecodeStringify(unsigned int inTimecode,
-                       unsigned int inTimecodeSubframe,
-                       char *Buffer,
-                       size_t BufferSize) {
+bool motionCaptureClientFramework::TimecodeStringify(
+    unsigned int inTimecode, unsigned int inTimecodeSubframe, char *Buffer,
+    size_t BufferSize) {
   bool bValid;
   int hour, minute, second, frame, subframe;
-  bValid = DecodeTimecode(inTimecode,
-                          inTimecodeSubframe,
-                          &hour,
-                          &minute,
-                          &second,
-                          &frame,
-                          &subframe);
+  bValid = DecodeTimecode(inTimecode, inTimecodeSubframe, &hour, &minute,
+                          &second, &frame, &subframe);
 
-  snprintf(Buffer, BufferSize, "%2d:%2d:%2d:%2d.%d",
-           hour, minute, second, frame, subframe);
+  snprintf(Buffer, BufferSize, "%2d:%2d:%2d:%2d.%d", hour, minute, second,
+           frame, subframe);
   for (unsigned int i = 0; i < strlen(Buffer); i++)
     if (Buffer[i] == ' ')
       Buffer[i] = '0';
@@ -206,7 +188,9 @@ bool motionCaptureClientFramework::TimecodeStringify(unsigned int inTimecode,
   return bValid;
 }
 
-void motionCaptureClientFramework::DecodeMarkerID(int sourceID, int *pOutEntityID, int *pOutMemberID) {
+void motionCaptureClientFramework::DecodeMarkerID(int sourceID,
+                                                  int *pOutEntityID,
+                                                  int *pOutMemberID) {
   if (pOutEntityID)
     *pOutEntityID = sourceID >> 16;
 
@@ -223,12 +207,8 @@ void motionCaptureClientFramework::spin() {
 
   // Block until we receive a datagram from the network
   // (from anyone including ourselves)
-  //ssize_t nDataBytesReceived =
-  recvfrom(DataSocket,
-           szData,
-           sizeof(szData),
-           0,
-           (sockaddr *) &TheirAddress,
+  // ssize_t nDataBytesReceived =
+  recvfrom(DataSocket, szData, sizeof(szData), 0, (sockaddr *)&TheirAddress,
            &addr_len);
   // Once we have bytes recieved Unpack organizes all the data
   //
@@ -241,9 +221,6 @@ void motionCaptureClientFramework::spin() {
     }*/
 }
 
-
-
-
 // ============================= Command mode ============================== //
 // Send a command to Motive.
 int motionCaptureClientFramework::SendCommand(char *szCommand) {
@@ -255,15 +232,12 @@ int motionCaptureClientFramework::SendCommand(char *szCommand) {
   strcpy(commandPacket.Data.szData, szCommand);
   commandPacket.iMessage = NAT_REQUEST;
   commandPacket.nDataBytes =
-      (unsigned short) (strlen(commandPacket.Data.szData) + 1);
+      (unsigned short)(strlen(commandPacket.Data.szData) + 1);
 
   // send command and wait (a bit)
   // for command response to set global response var in CommandListenThread
-  ssize_t iRet = sendto(CommandSocket,
-                        (char *) &commandPacket,
-                        4 + commandPacket.nDataBytes,
-                        0,
-                        (sockaddr *) &HostAddr,
+  ssize_t iRet = sendto(CommandSocket, (char *)&commandPacket,
+                        4 + commandPacket.nDataBytes, 0, (sockaddr *)&HostAddr,
                         sizeof(HostAddr));
   if (iRet == -1) {
     printf("Socket error sending command");
@@ -287,7 +261,8 @@ int motionCaptureClientFramework::SendCommand(char *szCommand) {
   return gCommandResponse;
 }
 
-void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outputs) {
+void motionCaptureClientFramework::Unpack(char *pData,
+                                          std::vector<Packet> &outputs) {
   // Checks for NatNet Version number. Used later in function.
   // Packets may be different depending on NatNet version.
   int major = NatNetVersion[0];
@@ -295,7 +270,7 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
 
   char *ptr = pData;
 
-  //printf("Begin Packet\n-------\n");
+  // printf("Begin Packet\n-------\n");
 
   output_packet_ = Packet();
   output_packet_.receive_timestamp = getTimestamp();
@@ -306,20 +281,18 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
 
   output_packet_.message_id = MessageID;
 
-
- 
   // Second 2 Bytes is the size of the packet
   int nBytes = 0;
   memcpy(&nBytes, ptr, 2);
   ptr += 2;
 
-  if (MessageID == 7)      // FRAME OF MOCAP DATA packet
+  if (MessageID == 7) // FRAME OF MOCAP DATA packet
   {
     // Next 4 Bytes is the frame number
     int frameNumber = 0;
     memcpy(&frameNumber, ptr, 4);
     ptr += 4;
-   //  printf("1---Frame # : %d\n", frameNumber);
+    //  printf("1---Frame # : %d\n", frameNumber);
 
     output_packet_.frame_number = frameNumber;
 
@@ -334,7 +307,7 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
       // Markerset name
       char szName[256];
       strcpy(szName, ptr);
-      int nDataBytes = (int) strlen(szName) + 1;
+      int nDataBytes = (int)strlen(szName) + 1;
       ptr += nDataBytes;
 
       // marker data
@@ -411,9 +384,9 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
       float qw = 0;
       memcpy(&qw, ptr, 4);
       ptr += 4;
-    //   printf("ID : %d\n", ID);
-     //  printf("pos: [%3.6f,%3.6f,%3.6f]\n", x, y, z);
-    //   printf("ori: [%3.6f,%3.6f,%3.6f,%3.6f]\n", qx, qy, qz, qw);
+      //   printf("ID : %d\n", ID);
+      //  printf("pos: [%3.6f,%3.6f,%3.6f]\n", x, y, z);
+      //   printf("ori: [%3.6f,%3.6f,%3.6f,%3.6f]\n", qx, qy, qz, qw);
 
       output_packet_.rigid_body_id = ID;
       output_packet_.pos[0] = x;
@@ -432,31 +405,32 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
         ptr += 4;
         // printf("Marker Count: %d\n", nRigidMarkers);
         int nBytes = nRigidMarkers * 3 * sizeof(float);
-        float *markerData = (float *) malloc(nBytes);
+        float *markerData = (float *)malloc(nBytes);
         memcpy(markerData, ptr, nBytes);
         ptr += nBytes;
 
         if (major >= 2) {
           // associated marker IDs
           nBytes = nRigidMarkers * sizeof(int);
-          int *markerIDs = (int *) malloc(nBytes);
+          int *markerIDs = (int *)malloc(nBytes);
           memcpy(markerIDs, ptr, nBytes);
           ptr += nBytes;
 
           // associated marker sizes
           nBytes = nRigidMarkers * sizeof(float);
-          float *markerSizes = (float *) malloc(nBytes);
+          float *markerSizes = (float *)malloc(nBytes);
           memcpy(markerSizes, ptr, nBytes);
           ptr += nBytes;
 
           for (int k = 0; k < nRigidMarkers; k++) {
-            // printf("\tMarker %d: id=%d\tsize=%3.1f\tpos=[%3.2f,%3.2f,%3.2f]\n",
-                   // k,
-                   // markerIDs[k],
-                   // markerSizes[k],
-                   // markerData[k * 3],
-                   // markerData[k * 3 + 1],
-                   // markerData[k * 3 + 2]);
+            // printf("\tMarker %d:
+            // id=%d\tsize=%3.1f\tpos=[%3.2f,%3.2f,%3.2f]\n",
+            // k,
+            // markerIDs[k],
+            // markerSizes[k],
+            // markerData[k * 3],
+            // markerData[k * 3 + 1],
+            // markerData[k * 3 + 2]);
           }
 
           if (markerIDs)
@@ -467,8 +441,8 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
         } else {
           for (int k = 0; k < nRigidMarkers; k++) {
             // printf("\tMarker %d: pos = [%3.2f,%3.2f,%3.2f]\n", k,
-                   // markerData[k * 3], markerData[k * 3 + 1],
-                   // markerData[k * 3 + 2]);
+            // markerData[k * 3], markerData[k * 3 + 1],
+            // markerData[k * 3 + 2]);
           }
         }
         if (markerData)
@@ -505,7 +479,6 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
       }
 
     } // Go to next rigid body
-
 
     // Skeletons (NatNet version 2.1 and later)
     if (((major == 2) && (minor > 0)) || (major > 2)) {
@@ -566,31 +539,32 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
             ptr += 4;
             // printf("Marker Count: %d\n", nRigidMarkers);
             int nBytes = nRigidMarkers * 3 * sizeof(float);
-            float *markerData = (float *) malloc(nBytes);
+            float *markerData = (float *)malloc(nBytes);
             memcpy(markerData, ptr, nBytes);
             ptr += nBytes;
 
             if (major >= 2) {
               // associated marker IDs
               nBytes = nRigidMarkers * sizeof(int);
-              int *markerIDs = (int *) malloc(nBytes);
+              int *markerIDs = (int *)malloc(nBytes);
               memcpy(markerIDs, ptr, nBytes);
               ptr += nBytes;
 
               // associated marker sizes
               nBytes = nRigidMarkers * sizeof(float);
-              float *markerSizes = (float *) malloc(nBytes);
+              float *markerSizes = (float *)malloc(nBytes);
               memcpy(markerSizes, ptr, nBytes);
               ptr += nBytes;
 
               for (int k = 0; k < nRigidMarkers; k++) {
-                // printf("\tMarker %d: id=%d\tsize=%3.1f\tpos=[%3.2f,%3.2f,%3.2f]\n",
-                       // k,
-                       // markerIDs[k],
-                       // markerSizes[k],
-                       // markerData[k * 3],
-                       // markerData[k * 3 + 1],
-                       // markerData[k * 3 + 2]);
+                // printf("\tMarker %d:
+                // id=%d\tsize=%3.1f\tpos=[%3.2f,%3.2f,%3.2f]\n",
+                // k,
+                // markerIDs[k],
+                // markerSizes[k],
+                // markerData[k * 3],
+                // markerData[k * 3 + 1],
+                // markerData[k * 3 + 2]);
               }
 
               if (markerIDs)
@@ -601,8 +575,8 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
             } else {
               for (int k = 0; k < nRigidMarkers; k++) {
                 // printf("\tMarker %d: pos = [%3.2f,%3.2f,%3.2f]\n", k,
-                       // markerData[k * 3], markerData[k * 3 + 1],
-                       // markerData[k * 3 + 2]);
+                // markerData[k * 3], markerData[k * 3 + 1],
+                // markerData[k * 3 + 2]);
               }
             }
             if (markerData)
@@ -659,7 +633,6 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
         int modelID, markerID;
         DecodeMarkerID(ID, &modelID, &markerID);
 
-
         // x
         float x = 0.0f;
         memcpy(&x, ptr, 4);
@@ -697,19 +670,18 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
             // marker is an active marker
             bool bActiveMarker = (params & 0x20) != 0;
           }
-
         }
 
         // NatNet version 3.0 and later
-        
+
         float residual = 0.0f;
-         /*
-        if (major >= 3) {
-          // Marker residual
-          memcpy(&residual, ptr, 4);
-          ptr += 4;
-        }
-        */
+        /*
+       if (major >= 3) {
+         // Marker residual
+         memcpy(&residual, ptr, 4);
+         ptr += 4;
+       }
+       */
         Marker marker_;
         marker_.id = markerID;
         marker_.residual = residual;
@@ -725,77 +697,81 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
         // printf("err:  [%3.2f]\n", residual);
       }
     }
-/*
-    // Force Plate data (NatNet version 2.9 and later)
-    if (((major == 2) && (minor >= 9)) || (major > 2)) {
-      int nForcePlates;
-      memcpy(&nForcePlates, ptr, 4);
-      ptr += 4;
-      for (int iForcePlate = 0; iForcePlate < nForcePlates; iForcePlate++) {
-        // ID
-        int ID = 0;
-        memcpy(&ID, ptr, 4);
-        ptr += 4;
-        // printf("Force Plate : %d\n", ID);
-
-        // Channel Count
-        int nChannels = 0;
-        memcpy(&nChannels, ptr, 4);
-        ptr += 4;
-
-        // Channel Data
-        for (int i = 0; i < nChannels; i++) {
-          // printf(" Channel %d : ", i);
-          int nFrames = 0;
-          memcpy(&nFrames, ptr, 4);
+    /*******************************************************************************/
+    // These are commented out because the package in header file has been
+    // changed, commented by Peter Li
+    /*******************************************************************************/
+    /*
+        // Force Plate data (NatNet version 2.9 and later)
+        if (((major == 2) && (minor >= 9)) || (major > 2)) {
+          int nForcePlates;
+          memcpy(&nForcePlates, ptr, 4);
           ptr += 4;
-          for (int j = 0; j < nFrames; j++) {
-            float val = 0.0f;
-            memcpy(&val, ptr, 4);
+          for (int iForcePlate = 0; iForcePlate < nForcePlates; iForcePlate++) {
+            // ID
+            int ID = 0;
+            memcpy(&ID, ptr, 4);
             ptr += 4;
-            printf("%3.2f   ", val);
+            // printf("Force Plate : %d\n", ID);
+
+            // Channel Count
+            int nChannels = 0;
+            memcpy(&nChannels, ptr, 4);
+            ptr += 4;
+
+            // Channel Data
+            for (int i = 0; i < nChannels; i++) {
+              // printf(" Channel %d : ", i);
+              int nFrames = 0;
+              memcpy(&nFrames, ptr, 4);
+              ptr += 4;
+              for (int j = 0; j < nFrames; j++) {
+                float val = 0.0f;
+                memcpy(&val, ptr, 4);
+                ptr += 4;
+                printf("%3.2f   ", val);
+              }
+              printf("\n");
+            }
           }
-          printf("\n");
         }
-      }
-    }
-*/
+    */
 
-/*
-    // Device data (NatNet version 3.0 and later)
-    if (((major == 2) && (minor >= 11)) || (major > 2)) {
-      int nDevices;
-      memcpy(&nDevices, ptr, 4);
-      ptr += 4;
-      for (int iDevice = 0; iDevice < nDevices; iDevice++) {
-        // ID
-        int ID = 0;
-        memcpy(&ID, ptr, 4);
-        ptr += 4;
-        // printf("Device : %d\n", ID);
-
-        // Channel Count
-        int nChannels = 0;
-        memcpy(&nChannels, ptr, 4);
-        ptr += 4;
-
-        // Channel Data
-        for (int i = 0; i < nChannels; i++) {
-          // printf(" Channel %d : ", i);
-          int nFrames = 0;
-          memcpy(&nFrames, ptr, 4);
+    /*
+        // Device data (NatNet version 3.0 and later)
+        if (((major == 2) && (minor >= 11)) || (major > 2)) {
+          int nDevices;
+          memcpy(&nDevices, ptr, 4);
           ptr += 4;
-          for (int j = 0; j < nFrames; j++) {
-            float val = 0.0f;
-            memcpy(&val, ptr, 4);
+          for (int iDevice = 0; iDevice < nDevices; iDevice++) {
+            // ID
+            int ID = 0;
+            memcpy(&ID, ptr, 4);
             ptr += 4;
-            printf("%3.2f   ", val);
+            // printf("Device : %d\n", ID);
+
+            // Channel Count
+            int nChannels = 0;
+            memcpy(&nChannels, ptr, 4);
+            ptr += 4;
+
+            // Channel Data
+            for (int i = 0; i < nChannels; i++) {
+              // printf(" Channel %d : ", i);
+              int nFrames = 0;
+              memcpy(&nFrames, ptr, 4);
+              ptr += 4;
+              for (int j = 0; j < nFrames; j++) {
+                float val = 0.0f;
+                memcpy(&val, ptr, 4);
+                ptr += 4;
+                printf("%3.2f   ", val);
+              }
+              printf("\n");
+            }
           }
-          printf("\n");
         }
-      }
-    }
-*/
+    */
     // software latency (removed in version 3.0)
     if (major < 3) {
       float softwareLatency = 0.0f;
@@ -825,39 +801,48 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
       float fTemp = 0.0f;
       memcpy(&fTemp, ptr, 4);
       ptr += 4;
-      timestamp = (double) fTemp;
+      timestamp = (double)fTemp;
     }
 
     // Convert to microseconds
-    output_packet_.timestamp = (timestamp*1e9)/server_frequency;
+    output_packet_.timestamp = (timestamp * 1e9) / server_frequency;
     // printf("Timestamp : %3.3f\n", timestamp);
-/*
-    // high res timestamps (version 3.0 and later)
-    if (major >= 3) {
-      uint64_t cameraMidExposureTimestamp = 0;
-      memcpy(&cameraMidExposureTimestamp, ptr, 8);
-      ptr += 8;
-      // printf("Mid-exposure timestamp : %" PRIu64 "\n",
-      //        cameraMidExposureTimestamp);
 
-      uint64_t cameraDataReceivedTimestamp = 0;
-      memcpy(&cameraDataReceivedTimestamp, ptr, 8);
-      ptr += 8;
-      // printf("Camera data received timestamp : %" PRIu64 "\n",
-      //        cameraDataReceivedTimestamp);
+    /*******************************************************************************/
+    // These are commented out because the package in header file has been
+    // changed, commented by Peter Li
+    /*******************************************************************************/
+    /*
+        // high res timestamps (version 3.0 and later)
+        if (major >= 3) {
+          uint64_t cameraMidExposureTimestamp = 0;
+          memcpy(&cameraMidExposureTimestamp, ptr, 8);
+          ptr += 8;
+          // printf("Mid-exposure timestamp : %" PRIu64 "\n",
+          //        cameraMidExposureTimestamp);
 
-      uint64_t transmitTimestamp = 0;
-      memcpy(&transmitTimestamp, ptr, 8);
-      ptr += 8;
-      // printf("Transmit timestamp : %" PRIu64 "\n", transmitTimestamp);
+          uint64_t cameraDataReceivedTimestamp = 0;
+          memcpy(&cameraDataReceivedTimestamp, ptr, 8);
+          ptr += 8;
+          // printf("Camera data received timestamp : %" PRIu64 "\n",
+          //        cameraDataReceivedTimestamp);
 
-      // Convert timestamps to microseconds and save them in the output packet
+          uint64_t transmitTimestamp = 0;
+          memcpy(&transmitTimestamp, ptr, 8);
+          ptr += 8;
+          // printf("Transmit timestamp : %" PRIu64 "\n", transmitTimestamp);
 
-      output_packet_.mid_exposure_timestamp = (cameraMidExposureTimestamp*1e9)/server_frequency;
-      output_packet_.camera_data_received_timestamp = (cameraDataReceivedTimestamp*1e9)/server_frequency;
-      output_packet_.transmit_timestamp = (transmitTimestamp*1e9)/server_frequency;
-    }
-*/
+          // Convert timestamps to microseconds and save them in the output
+       packet
+
+          output_packet_.mid_exposure_timestamp =
+       (cameraMidExposureTimestamp*1e9)/server_frequency;
+          output_packet_.camera_data_received_timestamp =
+       (cameraDataReceivedTimestamp*1e9)/server_frequency;
+          output_packet_.transmit_timestamp =
+       (transmitTimestamp*1e9)/server_frequency;
+        }
+    */
     // frame params
     short params = 0;
     memcpy(&params, ptr, 2);
@@ -866,7 +851,6 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
     bool bIsRecording = (params & 0x01) != 0;
     // 0x02 Actively tracked model list has changed
     bool bTrackedModelsChanged = (params & 0x02) != 0;
-
 
     // end of data tag
     int eod = 0;
@@ -890,12 +874,12 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
       ptr += 4;
       printf("Type : %d\n", type);
 
-      if (type == 0)   // markerset
+      if (type == 0) // markerset
       {
         // name
         char szName[256];
         strcpy(szName, ptr);
-        int nDataBytes = (int) strlen(szName) + 1;
+        int nDataBytes = (int)strlen(szName) + 1;
         ptr += nDataBytes;
         printf("Markerset Name: %s\n", szName);
 
@@ -908,11 +892,11 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
         for (int j = 0; j < nMarkers; j++) {
           char szName[256];
           strcpy(szName, ptr);
-          int nDataBytes = (int) strlen(szName) + 1;
+          int nDataBytes = (int)strlen(szName) + 1;
           ptr += nDataBytes;
           printf("Marker Name: %s\n", szName);
         }
-      } else if (type == 1)   // rigid body
+      } else if (type == 1) // rigid body
       {
         if (major >= 2) {
           // name
@@ -955,13 +939,13 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
 
           // Marker positions
           nBytes = nMarkers * 3 * sizeof(float);
-          float *markerPositions = (float *) malloc(nBytes);
+          float *markerPositions = (float *)malloc(nBytes);
           memcpy(markerPositions, ptr, nBytes);
           ptr += nBytes;
 
           // Marker required active labels
           nBytes = nMarkers * sizeof(int);
-          int *markerRequiredLabels = (int *) malloc(nBytes);
+          int *markerRequiredLabels = (int *)malloc(nBytes);
           memcpy(markerRequiredLabels, ptr, nBytes);
           ptr += nBytes;
 
@@ -970,10 +954,8 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
             const int markerRequiredLabel = markerRequiredLabels[markerIdx];
 
             printf("\tMarker #%d:\n", markerIdx);
-            printf("\t\tPosition: %.2f, %.2f, %.2f\n",
-                   markerPosition[0],
-                   markerPosition[1],
-                   markerPosition[2]);
+            printf("\t\tPosition: %.2f, %.2f, %.2f\n", markerPosition[0],
+                   markerPosition[1], markerPosition[2]);
 
             if (markerRequiredLabel != 0) {
               printf("\t\tRequired active label: %d\n", markerRequiredLabel);
@@ -983,7 +965,7 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
           free(markerPositions);
           free(markerRequiredLabels);
         }
-      } else if (type == 2)   // skeleton
+      } else if (type == 2) // skeleton
       {
         char szName[MAX_NAMELENGTH];
         strcpy(szName, ptr);
@@ -1036,7 +1018,7 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
         }
       }
 
-    }   // next dataset
+    } // next dataset
 
     printf("End Packet\n-------------\n");
 
@@ -1047,9 +1029,9 @@ void motionCaptureClientFramework::Unpack(char *pData, std::vector<Packet> &outp
   outputs.push_back(output_packet_);
 }
 
-
-int motionCaptureClientFramework::CreateCommandSocket(in_addr_t IP_Address, unsigned short uPort) {
-  struct sockaddr_in my_addr{};
+int motionCaptureClientFramework::CreateCommandSocket(in_addr_t IP_Address,
+                                                      unsigned short uPort) {
+  struct sockaddr_in my_addr {};
   static unsigned long ivalue;
   static unsigned long bFlag;
   int nlengthofsztemp = 64;
@@ -1066,9 +1048,8 @@ int motionCaptureClientFramework::CreateCommandSocket(in_addr_t IP_Address, unsi
   my_addr.sin_family = AF_INET;
   my_addr.sin_port = htons(uPort);
   my_addr.sin_addr.s_addr = IP_Address;
-  if (bind(sockfd,
-           (struct sockaddr *) &my_addr,
-           sizeof(struct sockaddr)) == -1) {
+  if (bind(sockfd, (struct sockaddr *)&my_addr, sizeof(struct sockaddr)) ==
+      -1) {
 
     close(sockfd);
     return -1;
@@ -1076,12 +1057,9 @@ int motionCaptureClientFramework::CreateCommandSocket(in_addr_t IP_Address, unsi
 
   // set to broadcast mode
   ivalue = 1;
-  if (setsockopt(sockfd,
-                 SOL_SOCKET,
-                 SO_BROADCAST,
-                 (char *) &ivalue,
+  if (setsockopt(sockfd, SOL_SOCKET, SO_BROADCAST, (char *)&ivalue,
                  sizeof(ivalue)) == -1) {
-                       printf("3.\n");
+    printf("3.\n");
     close(sockfd);
     return -1;
   }
@@ -1099,12 +1077,9 @@ void motionCaptureClientFramework::CommandListenThread() {
 
   while (true) {
     // blocking
-    nDataBytesReceived = recvfrom(CommandSocket,
-                                  (char *) &PacketIn,
-                                  sizeof(sPacket),
-                                  0,
-                                  (struct sockaddr *) &TheirAddress,
-                                  &addr_len);
+    nDataBytesReceived =
+        recvfrom(CommandSocket, (char *)&PacketIn, sizeof(sPacket), 0,
+                 (struct sockaddr *)&TheirAddress, &addr_len);
 
     if ((nDataBytesReceived == 0) || (nDataBytesReceived == -1))
       continue;
@@ -1112,26 +1087,33 @@ void motionCaptureClientFramework::CommandListenThread() {
     // debug - print message
     inet_ntop(AF_INET, &(TheirAddress.sin_addr), ip_as_str, INET_ADDRSTRLEN);
     printf("[Client] Received command from %s: Command=%d, nDataBytes=%d\n",
-           ip_as_str, (int) PacketIn.iMessage, (int) PacketIn.nDataBytes);
+           ip_as_str, (int)PacketIn.iMessage, (int)PacketIn.nDataBytes);
     /*
     unsigned char *ptr = (unsigned char *) &PacketIn;
     sSender_Server *server_info = (sSender_Server *) (ptr + 4);
 
-    std::cout << "server tick frequency: " << server_info->HighResClockFrequency << std::endl;
+    std::cout << "server tick frequency: " << server_info->HighResClockFrequency
+    << std::endl;
   */
-     std::vector<Packet> outputs;
+    std::vector<Packet> outputs;
 
     // handle command
     switch (PacketIn.iMessage) {
-      case NAT_MODELDEF:std::cout << "[Client] Received NAT_MODELDEF packet";
-        Unpack((char *) &PacketIn, outputs);
-        break;
-      case NAT_FRAMEOFDATA:
-        std::cout << "[Client] Received NAT_FRAMEOFDATA packet";
-        Unpack((char *) &PacketIn, outputs);
-        break;
-      
-      case NAT_SERVERINFO:
+    case NAT_MODELDEF:
+      std::cout << "[Client] Received NAT_MODELDEF packet";
+      Unpack((char *)&PacketIn, outputs);
+      break;
+    case NAT_FRAMEOFDATA:
+      std::cout << "[Client] Received NAT_FRAMEOFDATA packet";
+      Unpack((char *)&PacketIn, outputs);
+      break;
+
+    case NAT_SERVERINFO:
+
+      /*******************************************************************************/
+      // These are commented out because the package in header file has been
+      // changed, commented by Peter Li
+      /*******************************************************************************/
       /*
         // Streaming app's name, e.g., Motive
       std::cout << server_info->Common.szName << " ";
@@ -1154,38 +1136,36 @@ void motionCaptureClientFramework::CommandListenThread() {
           ServerVersion[i] = server_info->Common.Version[i];
         }
         */
-        std::cout << "do nothing";
-        break;
-       
-      case NAT_RESPONSE:gCommandResponseSize = PacketIn.nDataBytes;
-        if (gCommandResponseSize == 4)
-          memcpy(&gCommandResponse,
-                 &PacketIn.Data.lData[0],
-                 gCommandResponseSize);
-        else {
-          memcpy(&gCommandResponseString[0],
-                 &PacketIn.Data.cData[0],
-                 gCommandResponseSize);
-          printf("Response : %s", gCommandResponseString);
-          gCommandResponse = 0;   // ok
-        }
-        break;
-      case NAT_UNRECOGNIZED_REQUEST:
-        printf("[Client] received 'unrecognized request'\n");
-        gCommandResponseSize = 0;
-        gCommandResponse = 1;       // err
-        break;
-      case NAT_MESSAGESTRING:
-        printf("[Client] Received message: %s\n",
-               PacketIn.Data.szData);
-        break;
+      std::cout << "do nothing";
+      break;
+
+    case NAT_RESPONSE:
+      gCommandResponseSize = PacketIn.nDataBytes;
+      if (gCommandResponseSize == 4)
+        memcpy(&gCommandResponse, &PacketIn.Data.lData[0],
+               gCommandResponseSize);
+      else {
+        memcpy(&gCommandResponseString[0], &PacketIn.Data.cData[0],
+               gCommandResponseSize);
+        printf("Response : %s", gCommandResponseString);
+        gCommandResponse = 0; // ok
+      }
+      break;
+    case NAT_UNRECOGNIZED_REQUEST:
+      printf("[Client] received 'unrecognized request'\n");
+      gCommandResponseSize = 0;
+      gCommandResponse = 1; // err
+      break;
+    case NAT_MESSAGESTRING:
+      printf("[Client] Received message: %s\n", PacketIn.Data.szData);
+      break;
     }
   }
 }
 
 // Convert IP address string to address
-bool motionCaptureClientFramework::IPAddress_StringToAddr(char *szNameOrAddress,
-                            struct in_addr *Address) const{
+bool motionCaptureClientFramework::IPAddress_StringToAddr(
+    char *szNameOrAddress, struct in_addr *Address) const {
   int retVal;
   struct sockaddr_in saGNI;
   char hostName[256];
@@ -1200,8 +1180,8 @@ bool motionCaptureClientFramework::IPAddress_StringToAddr(char *szNameOrAddress,
 
   // getnameinfo in WS2tcpip is protocol independent
   // and resolves address to ANSI host name
-  if ((retVal = getnameinfo((sockaddr *) &saGNI, sizeof(sockaddr), hostName,
-                            256, servInfo, 256, NI_NUMERICSERV)) != 0) {
+  if ((retVal = getnameinfo((sockaddr *)&saGNI, sizeof(sockaddr), hostName, 256,
+                            servInfo, 256, NI_NUMERICSERV)) != 0) {
     // Returns error if getnameinfo failed
     printf("[PacketClient] GetHostByAddr failed\n");
     return false;
@@ -1210,6 +1190,4 @@ bool motionCaptureClientFramework::IPAddress_StringToAddr(char *szNameOrAddress,
   Address->s_addr = saGNI.sin_addr.s_addr;
   return true;
 }
-
-
 }

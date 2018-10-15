@@ -11,24 +11,24 @@ motionCaptureClientFramework.h
 /home/peterli/catkin_ws_SMC/src/optitrack_motive_1.8_client/include/optitrack_motive_2_client/motionCaptureClientFramework.h
 
 /home/peterli/catkin_ws_SMC/src/optitrack_motive_1.8_client/include/optitrack_motive_2_client/motionCaptureClientFramework.h
-iostream
--
-linux/limits.h
+arpa/inet.h
 -
 boost/optional.hpp
 -
 chrono
 -
-thread
+cstring
 -
-unistd.h
+iostream
 -
-netinet/in.h
--
-arpa/inet.h
+linux/limits.h
 -
 netdb.h
 -
-cstring
+netinet/in.h
+-
+thread
+-
+unistd.h
 -
 
