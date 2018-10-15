@@ -2,7 +2,7 @@
 
 Realize closed-loop control for mobile robots with sliding mode control in ROS. We assume that the mobile robot can already run standalone with '/cmd_vel' message. This project is used for sending desired motive commands to the mobile robot with measurement message of the robots. We assume the robot only moves forward for now in control loop.
 
-It should work in Ubuntu 16.04 x64 with ROS Kinetic.
+It should work in Ubuntu 16.04 x64 with ROS Kinetic, along with Motive 1.8(NatNet 2.8).
 
 Features:
 1. Modify the Optitrack Client for Motive 2 (with NatNet 3.0) in ROS to function with an older version (Motive 1.8 with NatNet 2.8 for our case, but can be modified for other version in your case by referring to the package client in your version SDK of NatNet).
