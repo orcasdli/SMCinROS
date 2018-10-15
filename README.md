@@ -14,7 +14,7 @@ Features:
 	If there are some copyright problems, please let me know and tell what I should do :)
 
 2. Write neccessary data into TXT which you can custom easily.
-3. Provide calculas functions. I only explain them in Chinese for now. With these functions, you can design other control methods as your wish.
+3. Provide calculas functions. I only explain them in detail with Chinese for now. But can understand from reading the code. With these functions, you can design other control methods as your wish.
 4. 'SAPcontrol_noSMC' is only an example for closed-loop. 'SAPcontrol_sync' is only an example for using data sync in closed-loop.
 5. Some functions are necessary for me only. Custom or delete them as you wish.
 6. The accuracy of loop are not guaranteed since it's a ROS project.
