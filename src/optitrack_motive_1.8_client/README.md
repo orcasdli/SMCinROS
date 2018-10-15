@@ -1,6 +1,9 @@
-# Original Project for Motive 2 is in here: https://github.com/AgileDrones/OptiTrack-Motive-2-Client
-# This the modified version for Motive 1.8.
-----------------------------------------------------------------------------------------------------
+## Original Project for Motive 2 is in here: https://github.com/AgileDrones/OptiTrack-Motive-2-Client
+## This the modified version for Motive 1.8.
+## If this is an offensive behaviour to the original copyright, please let me know what to do. Thank you！
+## ----------------------------------------------------------------------------------------------------
+# ROS OptiTrack Client for Motive 2
+
 # ROS OptiTrack Client for Motive 2
 
 ## Installation
