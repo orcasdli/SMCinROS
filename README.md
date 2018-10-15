@@ -39,7 +39,7 @@ Run it:
 # Switch to the launch file
 # source your own setup.bash! 
 # or:
-source ~/catkin_ws_SMC/devel/setup.bash
+source ~/SMCinROS/devel/setup.bash
 roslaunch runSMC.launch
 # open the launch file for customization.
 ````
