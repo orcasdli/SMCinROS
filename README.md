@@ -28,7 +28,7 @@ sudo apt install libeigen3-dev
 ```bash
 # You can build your own work space,copy the files in SRC to yours only and catkin_make.
 # or:
-git https://github.com/orcasdli/Sliding-mode-control-in-ROS.git
+git https://github.com/orcasdli/SMCinROS.git
 ````
 
 Run it:
