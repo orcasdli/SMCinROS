@@ -7,7 +7,8 @@ It should work in Ubuntu 16.04 x64 with ROS Kinetic, along with Motive 1.8(NatNe
 Features:
 1. Modify the Optitrack Client for Motive 2 (with NatNet 3.0) in ROS to function with an older version (Motive 1.8 with NatNet 2.8 for our case, but can be modified for other version in your case by referring to the package client in your version SDK of NatNet).
 
-	The orginal project is 'https://github.com/AgileDrones/OptiTrack-Motive-2-Client'.I tried to mark what I have modified in the source files.
+	The orginal project is https://github.com/AgileDrones/OptiTrack-Motive-2-Client
+	I tried to mark what I have modified in the source files.
 
 	!BE ATTENTION!: the Eigen only output Yaw angle in range [0,pi],but Roll and Pitch are [-pi,pi].I don't understand why but this can be a problem. You will have to convert Quaterniond from Motive manually if neccessary.
 
