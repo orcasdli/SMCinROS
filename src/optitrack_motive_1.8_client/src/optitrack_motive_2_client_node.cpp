@@ -186,7 +186,7 @@ szServerIPAddress = "192.168.50.171";
       //加上欧拉角 convert Quaterniond to Eulers, added by Peter Li
       //四元数->旋转矩阵->欧拉角 Quaterniond->RotationMatrix->Eulers
       ////!!!!!Be aware you can convert rad to degree here， which is convenient for comparing with Mtoive panels.
-      ///Custom for your need.注意此处转化成角度了，便于与视觉软件对比。
+      ///Custom for your need.注意此处是 rad。
       Matrix3d RotationMatrix_cur = quaternionENUVector.toRotationMatrix();
       Vector3d Eulers_cur = RotationMatrix_cur.eulerAngles(2,1,0);
       currentState.Eulers.z = Eulers_cur(0);//yaw(why only within [0,pi] why?)
