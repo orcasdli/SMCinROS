@@ -53,7 +53,7 @@ This is my blog (in Chinese) with some infomation about this project:
 https://blog.csdn.net/asdli
 
 Acknowledgements:
-Gratitude to Professor Liang Ding from State Key Laboratory of Robotics and Systems in  Harbin Institute of Technology, China for the support. 
+Personal gratitude to Professor Liang Ding from State Key Laboratory of Robotics and Systems in  Harbin Institute of Technology, China for the support. 
 
 
 
