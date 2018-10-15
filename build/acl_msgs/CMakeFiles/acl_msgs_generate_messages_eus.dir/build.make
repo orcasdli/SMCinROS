@@ -43,85 +43,85 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_com/src
+CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_SMC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/peterli/catkin_ws_com/build
+CMAKE_BINARY_DIR = /home/peterli/catkin_ws_SMC/build
 
 # Utility rule file for acl_msgs_generate_messages_eus.
 
 # Include the progress variables for this target.
 include acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/progress.make
 
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/IMU.l
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l
-acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/manifest.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/IMU.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l
+acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/manifest.l
 
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /home/peterli/catkin_ws_com/src/acl_msgs/msg/QuadAttCmd.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from acl_msgs/QuadAttCmd.msg"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_com/src/acl_msgs/msg/QuadAttCmd.msg -Iacl_msgs:/home/peterli/catkin_ws_com/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l: /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/QuadMotors.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating EusLisp code from acl_msgs/QuadMotors.msg"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/QuadMotors.msg -Iacl_msgs:/home/peterli/catkin_ws_SMC/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /home/peterli/catkin_ws_com/src/acl_msgs/msg/SMCData.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from acl_msgs/SMCData.msg"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_com/src/acl_msgs/msg/SMCData.msg -Iacl_msgs:/home/peterli/catkin_ws_com/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/ViconState.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating EusLisp code from acl_msgs/ViconState.msg"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/ViconState.msg -Iacl_msgs:/home/peterli/catkin_ws_SMC/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l: /home/peterli/catkin_ws_com/src/acl_msgs/msg/State.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from acl_msgs/State.msg"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_com/src/acl_msgs/msg/State.msg -Iacl_msgs:/home/peterli/catkin_ws_com/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/SMCData.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating EusLisp code from acl_msgs/SMCData.msg"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/SMCData.msg -Iacl_msgs:/home/peterli/catkin_ws_SMC/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /home/peterli/catkin_ws_com/src/acl_msgs/msg/IMU.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from acl_msgs/IMU.msg"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_com/src/acl_msgs/msg/IMU.msg -Iacl_msgs:/home/peterli/catkin_ws_com/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l: /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/State.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating EusLisp code from acl_msgs/State.msg"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/State.msg -Iacl_msgs:/home/peterli/catkin_ws_SMC/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l: /home/peterli/catkin_ws_com/src/acl_msgs/msg/QuadMotors.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from acl_msgs/QuadMotors.msg"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_com/src/acl_msgs/msg/QuadMotors.msg -Iacl_msgs:/home/peterli/catkin_ws_com/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/IMU.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/IMU.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating EusLisp code from acl_msgs/IMU.msg"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/IMU.msg -Iacl_msgs:/home/peterli/catkin_ws_SMC/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /home/peterli/catkin_ws_com/src/acl_msgs/msg/ViconState.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Twist.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Point.msg
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l: /opt/ros/kinetic/share/geometry_msgs/msg/Pose.msg
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp code from acl_msgs/ViconState.msg"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_com/src/acl_msgs/msg/ViconState.msg -Iacl_msgs:/home/peterli/catkin_ws_com/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/QuadAttCmd.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/share/geometry_msgs/msg/Quaternion.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/share/std_msgs/msg/Header.msg
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l: /opt/ros/kinetic/share/geometry_msgs/msg/Vector3.msg
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating EusLisp code from acl_msgs/QuadAttCmd.msg"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py /home/peterli/catkin_ws_SMC/src/acl_msgs/msg/QuadAttCmd.msg -Iacl_msgs:/home/peterli/catkin_ws_SMC/src/acl_msgs/msg -Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg -Igeometry_msgs:/opt/ros/kinetic/share/geometry_msgs/cmake/../msg -p acl_msgs -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg
 
-/home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating EusLisp manifest code for acl_msgs"
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs acl_msgs std_msgs geometry_msgs
+/home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/manifest.l: /opt/ros/kinetic/lib/geneus/gen_eus.py
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating EusLisp manifest code for acl_msgs"
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && ../catkin_generated/env_cached.sh /usr/bin/python /opt/ros/kinetic/share/geneus/cmake/../../../lib/geneus/gen_eus.py -m -o /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs acl_msgs std_msgs geometry_msgs
 
 acl_msgs_generate_messages_eus: acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/SMCData.l
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/State.l
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/IMU.l
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/msg/ViconState.l
-acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_com/devel/share/roseus/ros/acl_msgs/manifest.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadMotors.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/ViconState.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/SMCData.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/State.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/IMU.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/msg/QuadAttCmd.l
+acl_msgs_generate_messages_eus: /home/peterli/catkin_ws_SMC/devel/share/roseus/ros/acl_msgs/manifest.l
 acl_msgs_generate_messages_eus: acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/build.make
 
 .PHONY : acl_msgs_generate_messages_eus
@@ -132,10 +132,10 @@ acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/build: acl_msgs_generate_
 .PHONY : acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/build
 
 acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/clean:
-	cd /home/peterli/catkin_ws_com/build/acl_msgs && $(CMAKE_COMMAND) -P CMakeFiles/acl_msgs_generate_messages_eus.dir/cmake_clean.cmake
+	cd /home/peterli/catkin_ws_SMC/build/acl_msgs && $(CMAKE_COMMAND) -P CMakeFiles/acl_msgs_generate_messages_eus.dir/cmake_clean.cmake
 .PHONY : acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/clean
 
 acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/depend:
-	cd /home/peterli/catkin_ws_com/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/peterli/catkin_ws_com/src /home/peterli/catkin_ws_com/src/acl_msgs /home/peterli/catkin_ws_com/build /home/peterli/catkin_ws_com/build/acl_msgs /home/peterli/catkin_ws_com/build/acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/peterli/catkin_ws_SMC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/peterli/catkin_ws_SMC/src /home/peterli/catkin_ws_SMC/src/acl_msgs /home/peterli/catkin_ws_SMC/build /home/peterli/catkin_ws_SMC/build/acl_msgs /home/peterli/catkin_ws_SMC/build/acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : acl_msgs/CMakeFiles/acl_msgs_generate_messages_eus.dir/depend
 

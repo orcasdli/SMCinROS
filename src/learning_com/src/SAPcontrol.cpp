@@ -886,6 +886,8 @@ void run_SMC() {
   Robo_State_cur.V_c = fabs(Robo_State_cur.V_c); //只考虑向前运动，不然太复杂了
 }
 
+void get_ASMC_D(){}
+void run_A_SMC(){}
 //设置滑模控制参数
 void set_paras() { 
   //参数组1,圆

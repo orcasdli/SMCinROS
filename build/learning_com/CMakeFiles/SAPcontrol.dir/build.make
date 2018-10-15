@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_com/src
+CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_SMC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/peterli/catkin_ws_com/build
+CMAKE_BINARY_DIR = /home/peterli/catkin_ws_SMC/build
 
 # Include any dependencies generated for this target.
 include learning_com/CMakeFiles/SAPcontrol.dir/depend.make
@@ -58,17 +58,17 @@ include learning_com/CMakeFiles/SAPcontrol.dir/progress.make
 include learning_com/CMakeFiles/SAPcontrol.dir/flags.make
 
 learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o: learning_com/CMakeFiles/SAPcontrol.dir/flags.make
-learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o: /home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o"
-	cd /home/peterli/catkin_ws_com/build/learning_com && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o -c /home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol.cpp
+learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o: /home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o"
+	cd /home/peterli/catkin_ws_SMC/build/learning_com && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o -c /home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol.cpp
 
 learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.i"
-	cd /home/peterli/catkin_ws_com/build/learning_com && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol.cpp > CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.i
+	cd /home/peterli/catkin_ws_SMC/build/learning_com && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol.cpp > CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.i
 
 learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.s"
-	cd /home/peterli/catkin_ws_com/build/learning_com && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol.cpp -o CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.s
+	cd /home/peterli/catkin_ws_SMC/build/learning_com && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol.cpp -o CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.s
 
 learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o.requires:
 
@@ -88,34 +88,34 @@ SAPcontrol_OBJECTS = \
 # External object files for target SAPcontrol
 SAPcontrol_EXTERNAL_OBJECTS =
 
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/build.make
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libmessage_filters.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libroscpp.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_signals.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libxmlrpcpp.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librosconsole.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libroscpp_serialization.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librostime.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libcpp_common.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_system.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
-/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peterli/catkin_ws_com/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol"
-	cd /home/peterli/catkin_ws_com/build/learning_com && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SAPcontrol.dir/link.txt --verbose=$(VERBOSE)
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/build.make
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libmessage_filters.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libroscpp.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_signals.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libxmlrpcpp.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librosconsole.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librosconsole_log4cxx.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librosconsole_backend_interface.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/liblog4cxx.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_regex.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libroscpp_serialization.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/librostime.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /opt/ros/kinetic/lib/libcpp_common.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_chrono.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libboost_atomic.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/link.txt
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/peterli/catkin_ws_SMC/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable /home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol"
+	cd /home/peterli/catkin_ws_SMC/build/learning_com && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SAPcontrol.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
-learning_com/CMakeFiles/SAPcontrol.dir/build: /home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol
+learning_com/CMakeFiles/SAPcontrol.dir/build: /home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol
 
 .PHONY : learning_com/CMakeFiles/SAPcontrol.dir/build
 
@@ -124,10 +124,10 @@ learning_com/CMakeFiles/SAPcontrol.dir/requires: learning_com/CMakeFiles/SAPcont
 .PHONY : learning_com/CMakeFiles/SAPcontrol.dir/requires
 
 learning_com/CMakeFiles/SAPcontrol.dir/clean:
-	cd /home/peterli/catkin_ws_com/build/learning_com && $(CMAKE_COMMAND) -P CMakeFiles/SAPcontrol.dir/cmake_clean.cmake
+	cd /home/peterli/catkin_ws_SMC/build/learning_com && $(CMAKE_COMMAND) -P CMakeFiles/SAPcontrol.dir/cmake_clean.cmake
 .PHONY : learning_com/CMakeFiles/SAPcontrol.dir/clean
 
 learning_com/CMakeFiles/SAPcontrol.dir/depend:
-	cd /home/peterli/catkin_ws_com/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/peterli/catkin_ws_com/src /home/peterli/catkin_ws_com/src/learning_com /home/peterli/catkin_ws_com/build /home/peterli/catkin_ws_com/build/learning_com /home/peterli/catkin_ws_com/build/learning_com/CMakeFiles/SAPcontrol.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/peterli/catkin_ws_SMC/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/peterli/catkin_ws_SMC/src /home/peterli/catkin_ws_SMC/src/learning_com /home/peterli/catkin_ws_SMC/build /home/peterli/catkin_ws_SMC/build/learning_com /home/peterli/catkin_ws_SMC/build/learning_com/CMakeFiles/SAPcontrol.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : learning_com/CMakeFiles/SAPcontrol.dir/depend
 

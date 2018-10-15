@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol_sync.cpp
+/home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol_sync.cpp
 std_msgs/String.h
-/home/peterli/catkin_ws_com/src/learning_com/src/std_msgs/String.h
+/home/peterli/catkin_ws_SMC/src/learning_com/src/std_msgs/String.h
 geometry_msgs/Twist.h
 -
 math.h

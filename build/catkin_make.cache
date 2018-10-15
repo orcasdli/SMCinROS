@@ -1,2 +1,2 @@
-acl_msgs:learning_com:optitrack_motive_2_client
+acl_msgs:learning_com:optitrack_motive_1.8_client
 -DCATKIN_DEVEL_PREFIX=/home/peterli/catkin_ws_SMC/devel -DCMAKE_INSTALL_PREFIX=/home/peterli/catkin_ws_SMC/install -G Unix Makefiles

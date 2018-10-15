@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_com/src
+CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_SMC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/peterli/catkin_ws_com/build
+CMAKE_BINARY_DIR = /home/peterli/catkin_ws_SMC/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -135,9 +135,9 @@ test/fast: test
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_com/build/CMakeFiles /home/peterli/catkin_ws_com/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_SMC/build/CMakeFiles /home/peterli/catkin_ws_SMC/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_com/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_SMC/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -374,17 +374,17 @@ acl_msgs_generate_messages_cpp/fast:
 .PHONY : acl_msgs_generate_messages_cpp/fast
 
 #=============================================================================
-# Target rules for targets named _acl_msgs_generate_messages_check_deps_QuadMotors
+# Target rules for targets named _acl_msgs_generate_messages_check_deps_QuadAttCmd
 
 # Build rule for target.
-_acl_msgs_generate_messages_check_deps_QuadMotors: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _acl_msgs_generate_messages_check_deps_QuadMotors
-.PHONY : _acl_msgs_generate_messages_check_deps_QuadMotors
+_acl_msgs_generate_messages_check_deps_QuadAttCmd: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _acl_msgs_generate_messages_check_deps_QuadAttCmd
+.PHONY : _acl_msgs_generate_messages_check_deps_QuadAttCmd
 
 # fast build rule for target.
-_acl_msgs_generate_messages_check_deps_QuadMotors/fast:
-	$(MAKE) -f acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadMotors.dir/build.make acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadMotors.dir/build
-.PHONY : _acl_msgs_generate_messages_check_deps_QuadMotors/fast
+_acl_msgs_generate_messages_check_deps_QuadAttCmd/fast:
+	$(MAKE) -f acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadAttCmd.dir/build.make acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadAttCmd.dir/build
+.PHONY : _acl_msgs_generate_messages_check_deps_QuadAttCmd/fast
 
 #=============================================================================
 # Target rules for targets named _acl_msgs_generate_messages_check_deps_IMU
@@ -751,17 +751,17 @@ acl_msgs_generate_messages/fast:
 .PHONY : acl_msgs_generate_messages/fast
 
 #=============================================================================
-# Target rules for targets named _acl_msgs_generate_messages_check_deps_QuadAttCmd
+# Target rules for targets named _acl_msgs_generate_messages_check_deps_QuadMotors
 
 # Build rule for target.
-_acl_msgs_generate_messages_check_deps_QuadAttCmd: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 _acl_msgs_generate_messages_check_deps_QuadAttCmd
-.PHONY : _acl_msgs_generate_messages_check_deps_QuadAttCmd
+_acl_msgs_generate_messages_check_deps_QuadMotors: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _acl_msgs_generate_messages_check_deps_QuadMotors
+.PHONY : _acl_msgs_generate_messages_check_deps_QuadMotors
 
 # fast build rule for target.
-_acl_msgs_generate_messages_check_deps_QuadAttCmd/fast:
-	$(MAKE) -f acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadAttCmd.dir/build.make acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadAttCmd.dir/build
-.PHONY : _acl_msgs_generate_messages_check_deps_QuadAttCmd/fast
+_acl_msgs_generate_messages_check_deps_QuadMotors/fast:
+	$(MAKE) -f acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadMotors.dir/build.make acl_msgs/CMakeFiles/_acl_msgs_generate_messages_check_deps_QuadMotors.dir/build
+.PHONY : _acl_msgs_generate_messages_check_deps_QuadMotors/fast
 
 #=============================================================================
 # Target rules for targets named SAPcontrol
@@ -790,45 +790,6 @@ SAPcontrol_sync/fast:
 .PHONY : SAPcontrol_sync/fast
 
 #=============================================================================
-# Target rules for targets named listener
-
-# Build rule for target.
-listener: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 listener
-.PHONY : listener
-
-# fast build rule for target.
-listener/fast:
-	$(MAKE) -f learning_com/CMakeFiles/listener.dir/build.make learning_com/CMakeFiles/listener.dir/build
-.PHONY : listener/fast
-
-#=============================================================================
-# Target rules for targets named SAPcontrol_Openloop
-
-# Build rule for target.
-SAPcontrol_Openloop: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SAPcontrol_Openloop
-.PHONY : SAPcontrol_Openloop
-
-# fast build rule for target.
-SAPcontrol_Openloop/fast:
-	$(MAKE) -f learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build.make learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build
-.PHONY : SAPcontrol_Openloop/fast
-
-#=============================================================================
-# Target rules for targets named talker
-
-# Build rule for target.
-talker: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 talker
-.PHONY : talker
-
-# fast build rule for target.
-talker/fast:
-	$(MAKE) -f learning_com/CMakeFiles/talker.dir/build.make learning_com/CMakeFiles/talker.dir/build
-.PHONY : talker/fast
-
-#=============================================================================
 # Target rules for targets named optitrack_motive_2_client_node
 
 # Build rule for target.
@@ -838,7 +799,7 @@ optitrack_motive_2_client_node: cmake_check_build_system
 
 # fast build rule for target.
 optitrack_motive_2_client_node/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/optitrack_motive_2_client_node.dir/build.make optitrack_motive_2_client/CMakeFiles/optitrack_motive_2_client_node.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/optitrack_motive_2_client_node.dir/build.make optitrack_motive_1.8_client/CMakeFiles/optitrack_motive_2_client_node.dir/build
 .PHONY : optitrack_motive_2_client_node/fast
 
 #=============================================================================
@@ -851,7 +812,7 @@ _catkin_empty_exported_target: cmake_check_build_system
 
 # fast build rule for target.
 _catkin_empty_exported_target/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/_catkin_empty_exported_target.dir/build.make optitrack_motive_2_client/CMakeFiles/_catkin_empty_exported_target.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/_catkin_empty_exported_target.dir/build.make optitrack_motive_1.8_client/CMakeFiles/_catkin_empty_exported_target.dir/build
 .PHONY : _catkin_empty_exported_target/fast
 
 #=============================================================================
@@ -864,7 +825,7 @@ nav_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build.make optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_lisp.dir/build
 .PHONY : nav_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -877,7 +838,7 @@ nav_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_eus/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_eus.dir/build.make optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_eus.dir/build
 .PHONY : nav_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -890,7 +851,7 @@ optitrack_motive_2_client: cmake_check_build_system
 
 # fast build rule for target.
 optitrack_motive_2_client/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/optitrack_motive_2_client.dir/build.make optitrack_motive_2_client/CMakeFiles/optitrack_motive_2_client.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/optitrack_motive_2_client.dir/build.make optitrack_motive_1.8_client/CMakeFiles/optitrack_motive_2_client.dir/build
 .PHONY : optitrack_motive_2_client/fast
 
 #=============================================================================
@@ -903,7 +864,7 @@ nav_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build.make optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_cpp.dir/build
 .PHONY : nav_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -916,7 +877,7 @@ nav_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_py/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_py.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_py.dir/build.make optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_py.dir/build
 .PHONY : nav_msgs_generate_messages_py/fast
 
 #=============================================================================
@@ -929,7 +890,7 @@ actionlib_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build.make optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_nodejs.dir/build
 .PHONY : actionlib_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -942,7 +903,7 @@ actionlib_msgs_generate_messages_cpp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_cpp/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build.make optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_cpp.dir/build
 .PHONY : actionlib_msgs_generate_messages_cpp/fast
 
 #=============================================================================
@@ -955,7 +916,7 @@ actionlib_msgs_generate_messages_eus: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_eus/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
 .PHONY : actionlib_msgs_generate_messages_eus/fast
 
 #=============================================================================
@@ -968,7 +929,7 @@ actionlib_msgs_generate_messages_lisp: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_lisp/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build.make optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_lisp.dir/build
 .PHONY : actionlib_msgs_generate_messages_lisp/fast
 
 #=============================================================================
@@ -981,7 +942,7 @@ nav_msgs_generate_messages_nodejs: cmake_check_build_system
 
 # fast build rule for target.
 nav_msgs_generate_messages_nodejs/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make optitrack_motive_2_client/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make optitrack_motive_1.8_client/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
 .PHONY : nav_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
@@ -994,7 +955,7 @@ actionlib_msgs_generate_messages_py: cmake_check_build_system
 
 # fast build rule for target.
 actionlib_msgs_generate_messages_py/fast:
-	$(MAKE) -f optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make optitrack_motive_2_client/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
+	$(MAKE) -f optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build.make optitrack_motive_1.8_client/CMakeFiles/actionlib_msgs_generate_messages_py.dir/build
 .PHONY : actionlib_msgs_generate_messages_py/fast
 
 # Help Target
@@ -1026,7 +987,7 @@ help:
 	@echo "... acl_msgs_generate_messages_lisp"
 	@echo "... acl_msgs_geneus"
 	@echo "... acl_msgs_generate_messages_cpp"
-	@echo "... _acl_msgs_generate_messages_check_deps_QuadMotors"
+	@echo "... _acl_msgs_generate_messages_check_deps_QuadAttCmd"
 	@echo "... _acl_msgs_generate_messages_check_deps_IMU"
 	@echo "... _acl_msgs_generate_messages_check_deps_SMCData"
 	@echo "... std_msgs_generate_messages_py"
@@ -1055,12 +1016,9 @@ help:
 	@echo "... acl_msgs_generate_messages_py"
 	@echo "... rosgraph_msgs_generate_messages_nodejs"
 	@echo "... acl_msgs_generate_messages"
-	@echo "... _acl_msgs_generate_messages_check_deps_QuadAttCmd"
+	@echo "... _acl_msgs_generate_messages_check_deps_QuadMotors"
 	@echo "... SAPcontrol"
 	@echo "... SAPcontrol_sync"
-	@echo "... listener"
-	@echo "... SAPcontrol_Openloop"
-	@echo "... talker"
 	@echo "... optitrack_motive_2_client_node"
 	@echo "... _catkin_empty_exported_target"
 	@echo "... nav_msgs_generate_messages_lisp"

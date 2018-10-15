@@ -1,8 +1,8 @@
-# Install script for directory: /home/peterli/catkin_ws_com/src/learning_com
+# Install script for directory: /home/peterli/catkin_ws_SMC/src/learning_com
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/peterli/catkin_ws_com/install")
+  set(CMAKE_INSTALL_PREFIX "/home/peterli/catkin_ws_SMC/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -33,17 +33,17 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/peterli/catkin_ws_com/build/learning_com/catkin_generated/installspace/learning_com.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/peterli/catkin_ws_SMC/build/learning_com/catkin_generated/installspace/learning_com.pc")
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/learning_com/cmake" TYPE FILE FILES
-    "/home/peterli/catkin_ws_com/build/learning_com/catkin_generated/installspace/learning_comConfig.cmake"
-    "/home/peterli/catkin_ws_com/build/learning_com/catkin_generated/installspace/learning_comConfig-version.cmake"
+    "/home/peterli/catkin_ws_SMC/build/learning_com/catkin_generated/installspace/learning_comConfig.cmake"
+    "/home/peterli/catkin_ws_SMC/build/learning_com/catkin_generated/installspace/learning_comConfig-version.cmake"
     )
 endif()
 
 if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/learning_com" TYPE FILE FILES "/home/peterli/catkin_ws_com/src/learning_com/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/learning_com" TYPE FILE FILES "/home/peterli/catkin_ws_SMC/src/learning_com/package.xml")
 endif()
 

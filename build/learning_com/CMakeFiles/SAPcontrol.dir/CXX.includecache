@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/peterli/catkin_ws_com/devel/include/acl_msgs/ViconState.h
+/home/peterli/catkin_ws_SMC/devel/include/acl_msgs/ViconState.h
 string
 -
 vector
@@ -34,13 +34,13 @@ geometry_msgs/Vector3.h
 geometry_msgs/Vector3.h
 -
 
-/home/peterli/catkin_ws_com/src/learning_com/include/learning_com/Data_def.h
+/home/peterli/catkin_ws_SMC/src/learning_com/include/learning_com/Data_def.h
 ros/ros.h
 -
 
-/home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol.cpp
+/home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol.cpp
 std_msgs/String.h
-/home/peterli/catkin_ws_com/src/learning_com/src/std_msgs/String.h
+/home/peterli/catkin_ws_SMC/src/learning_com/src/std_msgs/String.h
 boost/thread.hpp
 -
 geometry_msgs/Twist.h

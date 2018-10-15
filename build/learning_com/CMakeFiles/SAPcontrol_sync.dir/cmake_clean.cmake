@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.o"
-  "/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol_sync.pdb"
-  "/home/peterli/catkin_ws_com/devel/lib/learning_com/SAPcontrol_sync"
+  "/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol_sync.pdb"
+  "/home/peterli/catkin_ws_SMC/devel/lib/learning_com/SAPcontrol_sync"
 )
 
 # Per-language clean rules from dependency scanning.

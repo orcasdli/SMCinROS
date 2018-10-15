@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/peterli/catkin_ws_com/src/learning_com/src/SAPcontrol_sync.cpp" "/home/peterli/catkin_ws_com/build/learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.o"
+  "/home/peterli/catkin_ws_SMC/src/learning_com/src/SAPcontrol_sync.cpp" "/home/peterli/catkin_ws_SMC/build/learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,8 +17,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/peterli/catkin_ws_com/src/learning_com/include"
-  "/home/peterli/catkin_ws_com/devel/include"
+  "/home/peterli/catkin_ws_SMC/src/learning_com/include"
+  "/home/peterli/catkin_ws_SMC/devel/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

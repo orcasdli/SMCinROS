@@ -48,13 +48,23 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_com/src
+CMAKE_SOURCE_DIR = /home/peterli/catkin_ws_SMC/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/peterli/catkin_ws_com/build
+CMAKE_BINARY_DIR = /home/peterli/catkin_ws_SMC/build
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target install
 install: preinstall
@@ -67,6 +77,17 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target edit_cache
 edit_cache:
@@ -89,27 +110,6 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -135,14 +135,14 @@ install/local/fast: install/local
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/peterli/catkin_ws_com/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_com/build/CMakeFiles /home/peterli/catkin_ws_com/build/learning_com/CMakeFiles/progress.marks
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_com/build/CMakeFiles 0
+	cd /home/peterli/catkin_ws_SMC/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_SMC/build/CMakeFiles /home/peterli/catkin_ws_SMC/build/learning_com/CMakeFiles/progress.marks
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/peterli/catkin_ws_SMC/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/clean
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/clean
 .PHONY : clean
 
 # The main clean target
@@ -152,22 +152,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/preinstall
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/preinstall
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/peterli/catkin_ws_com/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/peterli/catkin_ws_SMC/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 learning_com/CMakeFiles/SAPcontrol.dir/rule:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/SAPcontrol.dir/rule
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/SAPcontrol.dir/rule
 .PHONY : learning_com/CMakeFiles/SAPcontrol.dir/rule
 
 # Convenience name for target.
@@ -177,12 +177,12 @@ SAPcontrol: learning_com/CMakeFiles/SAPcontrol.dir/rule
 
 # fast build rule for target.
 SAPcontrol/fast:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/build
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/build
 .PHONY : SAPcontrol/fast
 
 # Convenience name for target.
 learning_com/CMakeFiles/SAPcontrol_sync.dir/rule:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/SAPcontrol_sync.dir/rule
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/SAPcontrol_sync.dir/rule
 .PHONY : learning_com/CMakeFiles/SAPcontrol_sync.dir/rule
 
 # Convenience name for target.
@@ -192,53 +192,8 @@ SAPcontrol_sync: learning_com/CMakeFiles/SAPcontrol_sync.dir/rule
 
 # fast build rule for target.
 SAPcontrol_sync/fast:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/build
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/build
 .PHONY : SAPcontrol_sync/fast
-
-# Convenience name for target.
-learning_com/CMakeFiles/listener.dir/rule:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/listener.dir/rule
-.PHONY : learning_com/CMakeFiles/listener.dir/rule
-
-# Convenience name for target.
-listener: learning_com/CMakeFiles/listener.dir/rule
-
-.PHONY : listener
-
-# fast build rule for target.
-listener/fast:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/listener.dir/build.make learning_com/CMakeFiles/listener.dir/build
-.PHONY : listener/fast
-
-# Convenience name for target.
-learning_com/CMakeFiles/SAPcontrol_Openloop.dir/rule:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/SAPcontrol_Openloop.dir/rule
-.PHONY : learning_com/CMakeFiles/SAPcontrol_Openloop.dir/rule
-
-# Convenience name for target.
-SAPcontrol_Openloop: learning_com/CMakeFiles/SAPcontrol_Openloop.dir/rule
-
-.PHONY : SAPcontrol_Openloop
-
-# fast build rule for target.
-SAPcontrol_Openloop/fast:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build.make learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build
-.PHONY : SAPcontrol_Openloop/fast
-
-# Convenience name for target.
-learning_com/CMakeFiles/talker.dir/rule:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f CMakeFiles/Makefile2 learning_com/CMakeFiles/talker.dir/rule
-.PHONY : learning_com/CMakeFiles/talker.dir/rule
-
-# Convenience name for target.
-talker: learning_com/CMakeFiles/talker.dir/rule
-
-.PHONY : talker
-
-# fast build rule for target.
-talker/fast:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/talker.dir/build.make learning_com/CMakeFiles/talker.dir/build
-.PHONY : talker/fast
 
 src/SAPcontrol.o: src/SAPcontrol.cpp.o
 
@@ -246,7 +201,7 @@ src/SAPcontrol.o: src/SAPcontrol.cpp.o
 
 # target to build an object file
 src/SAPcontrol.cpp.o:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.o
 .PHONY : src/SAPcontrol.cpp.o
 
 src/SAPcontrol.i: src/SAPcontrol.cpp.i
@@ -255,7 +210,7 @@ src/SAPcontrol.i: src/SAPcontrol.cpp.i
 
 # target to preprocess a source file
 src/SAPcontrol.cpp.i:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.i
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.i
 .PHONY : src/SAPcontrol.cpp.i
 
 src/SAPcontrol.s: src/SAPcontrol.cpp.s
@@ -264,35 +219,8 @@ src/SAPcontrol.s: src/SAPcontrol.cpp.s
 
 # target to generate assembly for a file
 src/SAPcontrol.cpp.s:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.s
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol.dir/build.make learning_com/CMakeFiles/SAPcontrol.dir/src/SAPcontrol.cpp.s
 .PHONY : src/SAPcontrol.cpp.s
-
-src/SAPcontrol_Openloop.o: src/SAPcontrol_Openloop.cpp.o
-
-.PHONY : src/SAPcontrol_Openloop.o
-
-# target to build an object file
-src/SAPcontrol_Openloop.cpp.o:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build.make learning_com/CMakeFiles/SAPcontrol_Openloop.dir/src/SAPcontrol_Openloop.cpp.o
-.PHONY : src/SAPcontrol_Openloop.cpp.o
-
-src/SAPcontrol_Openloop.i: src/SAPcontrol_Openloop.cpp.i
-
-.PHONY : src/SAPcontrol_Openloop.i
-
-# target to preprocess a source file
-src/SAPcontrol_Openloop.cpp.i:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build.make learning_com/CMakeFiles/SAPcontrol_Openloop.dir/src/SAPcontrol_Openloop.cpp.i
-.PHONY : src/SAPcontrol_Openloop.cpp.i
-
-src/SAPcontrol_Openloop.s: src/SAPcontrol_Openloop.cpp.s
-
-.PHONY : src/SAPcontrol_Openloop.s
-
-# target to generate assembly for a file
-src/SAPcontrol_Openloop.cpp.s:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_Openloop.dir/build.make learning_com/CMakeFiles/SAPcontrol_Openloop.dir/src/SAPcontrol_Openloop.cpp.s
-.PHONY : src/SAPcontrol_Openloop.cpp.s
 
 src/SAPcontrol_sync.o: src/SAPcontrol_sync.cpp.o
 
@@ -300,7 +228,7 @@ src/SAPcontrol_sync.o: src/SAPcontrol_sync.cpp.o
 
 # target to build an object file
 src/SAPcontrol_sync.cpp.o:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.o
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.o
 .PHONY : src/SAPcontrol_sync.cpp.o
 
 src/SAPcontrol_sync.i: src/SAPcontrol_sync.cpp.i
@@ -309,7 +237,7 @@ src/SAPcontrol_sync.i: src/SAPcontrol_sync.cpp.i
 
 # target to preprocess a source file
 src/SAPcontrol_sync.cpp.i:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.i
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.i
 .PHONY : src/SAPcontrol_sync.cpp.i
 
 src/SAPcontrol_sync.s: src/SAPcontrol_sync.cpp.s
@@ -318,62 +246,8 @@ src/SAPcontrol_sync.s: src/SAPcontrol_sync.cpp.s
 
 # target to generate assembly for a file
 src/SAPcontrol_sync.cpp.s:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.s
+	cd /home/peterli/catkin_ws_SMC/build && $(MAKE) -f learning_com/CMakeFiles/SAPcontrol_sync.dir/build.make learning_com/CMakeFiles/SAPcontrol_sync.dir/src/SAPcontrol_sync.cpp.s
 .PHONY : src/SAPcontrol_sync.cpp.s
-
-src/listener.o: src/listener.cpp.o
-
-.PHONY : src/listener.o
-
-# target to build an object file
-src/listener.cpp.o:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/listener.dir/build.make learning_com/CMakeFiles/listener.dir/src/listener.cpp.o
-.PHONY : src/listener.cpp.o
-
-src/listener.i: src/listener.cpp.i
-
-.PHONY : src/listener.i
-
-# target to preprocess a source file
-src/listener.cpp.i:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/listener.dir/build.make learning_com/CMakeFiles/listener.dir/src/listener.cpp.i
-.PHONY : src/listener.cpp.i
-
-src/listener.s: src/listener.cpp.s
-
-.PHONY : src/listener.s
-
-# target to generate assembly for a file
-src/listener.cpp.s:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/listener.dir/build.make learning_com/CMakeFiles/listener.dir/src/listener.cpp.s
-.PHONY : src/listener.cpp.s
-
-src/talker.o: src/talker.cpp.o
-
-.PHONY : src/talker.o
-
-# target to build an object file
-src/talker.cpp.o:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/talker.dir/build.make learning_com/CMakeFiles/talker.dir/src/talker.cpp.o
-.PHONY : src/talker.cpp.o
-
-src/talker.i: src/talker.cpp.i
-
-.PHONY : src/talker.i
-
-# target to preprocess a source file
-src/talker.cpp.i:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/talker.dir/build.make learning_com/CMakeFiles/talker.dir/src/talker.cpp.i
-.PHONY : src/talker.cpp.i
-
-src/talker.s: src/talker.cpp.s
-
-.PHONY : src/talker.s
-
-# target to generate assembly for a file
-src/talker.cpp.s:
-	cd /home/peterli/catkin_ws_com/build && $(MAKE) -f learning_com/CMakeFiles/talker.dir/build.make learning_com/CMakeFiles/talker.dir/src/talker.cpp.s
-.PHONY : src/talker.cpp.s
 
 # Help Target
 help:
@@ -381,33 +255,21 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... install"
-	@echo "... SAPcontrol"
-	@echo "... edit_cache"
-	@echo "... SAPcontrol_sync"
-	@echo "... rebuild_cache"
-	@echo "... listener"
-	@echo "... SAPcontrol_Openloop"
-	@echo "... test"
-	@echo "... talker"
 	@echo "... list_install_components"
+	@echo "... install"
+	@echo "... test"
+	@echo "... edit_cache"
+	@echo "... SAPcontrol"
+	@echo "... rebuild_cache"
+	@echo "... SAPcontrol_sync"
 	@echo "... install/strip"
 	@echo "... install/local"
 	@echo "... src/SAPcontrol.o"
 	@echo "... src/SAPcontrol.i"
 	@echo "... src/SAPcontrol.s"
-	@echo "... src/SAPcontrol_Openloop.o"
-	@echo "... src/SAPcontrol_Openloop.i"
-	@echo "... src/SAPcontrol_Openloop.s"
 	@echo "... src/SAPcontrol_sync.o"
 	@echo "... src/SAPcontrol_sync.i"
 	@echo "... src/SAPcontrol_sync.s"
-	@echo "... src/listener.o"
-	@echo "... src/listener.i"
-	@echo "... src/listener.s"
-	@echo "... src/talker.o"
-	@echo "... src/talker.i"
-	@echo "... src/talker.s"
 .PHONY : help
 
 
@@ -419,6 +281,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/peterli/catkin_ws_com/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/peterli/catkin_ws_SMC/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 
