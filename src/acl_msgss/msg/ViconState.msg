@@ -1,0 +1,9 @@
+Header header
+geometry_msgs/Pose pose
+geometry_msgs/Vector3 Eulers
+geometry_msgs/Twist twist
+geometry_msgs/Vector3 pos_accel
+geometry_msgs/Vector3 Eulers_accel
+bool has_pose
+bool has_twist
+bool has_accel
