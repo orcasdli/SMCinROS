@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
   ROS_INFO("ServerIPAddress is %s", szServerIPAddress.c_str());     
 
 /*
-// test for direct input here dded, by Peter Li
+// test for direct input here，added by Peter Li
 szMyIPAddress = "192.168.50.170";
 szServerIPAddress = "192.168.50.171";
 */
