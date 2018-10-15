@@ -30,7 +30,7 @@ Download
 ```bash
 # You can build your own work space,copy the files in SRC to yours only and catkin_make.
 # or:
-git https://github.com/orcasdli/SMCinROS.git
+git clone https://github.com/orcasdli/SMCinROS.git
 ````
 
 Run it:
