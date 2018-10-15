@@ -12,7 +12,7 @@ Features:
 
 	!BE ATTENTION!: the Eigen only output Yaw angle in range [0,pi],but Roll and Pitch are [-pi,pi].I don't understand why but this can be a problem. You will have to convert Quaterniond from Motive manually if neccessary.
 
-	If there are some copyright problems, please let me know and tell what I should do :)
+	If there are some copyright problems, please let me know and tell me what I should do :)
 
 2. Write neccessary data into TXT which you can custom easily.
 3. Provide calculas functions. I only explain them in detail with Chinese for now. But can understand from reading the code. With these functions, you can design other control methods as your wish.
@@ -20,7 +20,7 @@ Features:
 5. Some functions are necessary for me only. Custom or delete them as you wish.
 6. The time accuracy of the control loop is not guaranteed since it's a ROS project.
 7. I use fast double power reaching law for sliding surface here. You can modify it for other simple methods/algorithms.
-8. Please note this is my first ROS project. Therefore, it should be helpful for other ROS learner wishing to step a little further, but not be a perfect and steady software framework. 
+8. Please note this is my first ROS project. Therefore, it should be helpful for other ROS learner wishing to step a little further or used in lab, but not be a perfect and steady software framework. 
 
 ## Installation
 
