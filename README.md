@@ -18,6 +18,8 @@ Features:
 4. 'SAPcontrol_noSMC' is only an example for closed-loop. 'SAPcontrol_sync' is only an example for using data sync in closed-loop.
 5. Some functions are necessary for me only. Custom or delete them as you wish.
 6. The accuracy of loop are not guaranteed since it's a ROS project.
+7. I use fast double power reaching law for sliding surface here. You can modify it for other simple methods/algorithms.
+8. Please note this is my first ROS project. Therefore, it should be helpful for other ROS learner wishing to step a little further, but not a perfect and steady software framework. 
 
 ## Installation
 
