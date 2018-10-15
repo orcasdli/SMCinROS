@@ -1,4 +1,13 @@
-
+/* SMC control for a ROS WMR
+* Written by Peter Li/ Zhi Li from HRUST
+* Copyright (c) 2018 Peter Li/ Zhi Li
+*
+* Licensed same as jquery - MIT License
+* http://www.opensource.org/licenses/mit-license.php
+*
+* email: lizhi_haligong@163.com
+* Date: 2018-09-03
+*/
 
 #include "std_msgs/String.h"
 #include <boost/thread.hpp>
