@@ -1,0 +1,9 @@
+
+# ROSINSTALL COMPONENTS FOR OPTITRACK CLIENT
+- git:
+    local-name: acl_msgs
+    uri: https://bitbucket.org/brettlopez/acl_msgs.git
+
+- git:
+    local-name: optitrack_motive_2_client
+    uri: https://github.com/AgileDrones/OptiTrack-Motive-2-Client.git
