@@ -4,7 +4,7 @@
       <!--<rosparam file="$(find mypackage)/config/example.yaml" command="load" />-->
       <param name="MyIPAddress" type="string" value="192.168.50.170" />
       <param name="ServerIPAddress" type="string" value="192.168.50.79" />
-      <!--备注-->
+      <!--"MyIPAddress" is your PC address for this program. "ServerIPAddress" is the PC running Motive-->
    </node>
 
    <node name="SAPcontrol" pkg="learning_com" type="SAPcontrol" output="screen">
