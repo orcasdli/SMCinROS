@@ -15,7 +15,7 @@ Features:
 	If there are some copyright problems, please let me know and tell me what I should do :)
 
 2. Write neccessary data into TXT which you can custom easily.
-3. Provide calculas functions. I only explain them in detail with Chinese for now. But can understand from reading the code. With these functions, you can design other control methods as your wish.
+3. Provide calculas functions. I only explain them in detail with Chinese for now. But you can understand from reading the code. With these functions, you can design other control methods as your wish.
 4. 'SAPcontrol_noSMC' is only an example for closed-loop. 'SAPcontrol_sync' is only an example for using data sync in closed-loop.
 5. Some functions are necessary for me only. Custom or delete them as you wish.
 6. The time accuracy of the control loop is not guaranteed since it's a ROS project.
@@ -48,7 +48,7 @@ roslaunch runSMC.launch
 
 
 
-Refer to https://github.com/AgileDrones/OptiTrack-Motive-2-Client for install of Optitrack client please if you have problem or want to use Motive 2.0.
+Refer to https://github.com/AgileDrones/OptiTrack-Motive-2-Client for the installation of Optitrack client please if you have problem or want to use Motive 2.0.
 
 This is my blog (in Chinese) with some infomation about this project:
 https://blog.csdn.net/asdli
