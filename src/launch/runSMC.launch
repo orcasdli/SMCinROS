@@ -10,11 +10,13 @@
    <node name="SAPcontrol" pkg="learning_com" type="SAPcontrol" output="screen">
       <!--<rosparam file="$(find mypackage)/config/example.yaml" command="load" />-->
       <param name="flag" type="int" value="1" />
-      <!--flag =1 为圆周运动，2为余弦运动 -->     
-      <param name="Slip_com" type="int" value="1" />
-      <!--如果为0就是不滑转补偿，1是滑转补偿，后续考虑把参数也放进来-->
-      <param name="SMC_on" type="int" value="2" />
-      <!--如果为0就是开环跑，1是普通SMC，2是自适应SMC-->
-
+      <!--flag =1 为圆周运动 ，2为余弦运动 -->     
+      <!--flag =1 the desired trajectory is circle，2 cosine-->   
+      <param name="Slip_com" type="int" value="0" />
+      <!--如果为0就是不滑转补偿，1是滑转补偿，目前没用-->
+      <!--the slip compensation is useless for current progrem,should be 0 for now-->
+      <param name="SMC_on" type="int" value="0" />
+      <!--如果为0就是开环跑，1是普通SMC，2目前没用-->
+      <!--SMC_on = 0 is open loop, =1 is SMC with fast double power reaching law, =2 is reserved -->
    </node>
 </launch>
