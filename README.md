@@ -1,6 +1,6 @@
 # SMCinROS
 
-Realize closed-loop control for mobile robots with sliding mode control in ROS. We assume that the mobile robot can already run standalone with '/cmd_vel' message. This project is used for sending desired motive commands to the mobile robot with measurement message of the robots. We assume the robot only moves forward for now in control loop.
+Realize closed-loop control for mobile robots with sliding mode control (SMC) in ROS. We assume that the mobile robot can already run standalone with '/cmd_vel' message. This project is used for sending desired motive commands to the mobile robot.The desired command is achieved from dealing with measured pose and target pose by SMC. We assume the robot only moves forward for now.
 
 It should work in Ubuntu 16.04 x64 with ROS Kinetic, along with Motive 1.8(NatNet 2.8).
 
