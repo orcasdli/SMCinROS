@@ -50,7 +50,7 @@ roslaunch runSMC.launch
 
 Refer to https://github.com/AgileDrones/OptiTrack-Motive-2-Client for the installation of Optitrack client please if you have problem or want to use Motive 2.0.
 
-This is my blog (in Chinese) with some infomation about this project:
+This is my blog (in Chinese) with some detailed infomation about this project:
 https://blog.csdn.net/asdli
 
 Acknowledgements:
